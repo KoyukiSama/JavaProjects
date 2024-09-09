@@ -17,12 +17,13 @@ public class TaskManager {
         tasks.add( new Task(id, description) );
     }
 
-    public void listTasks() {
+    public void listTasks() { // list tasks
         System.out.println("Tasks:\n");
         for (Task task : tasks) {
             System.out.println(task);
         }
     }
+    
 
     public static void main(String[] args) {
         TaskManager manager = new TaskManager();
