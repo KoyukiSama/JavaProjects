@@ -15,7 +15,7 @@ public class TaskManager {
     public void addTask(String description) { // add task
         int id = tasks.size() + 1;
         tasks.add( new Task(id, description) );
-        System.out.println("Success, task added!\n");
+        System.out.println("Success, task added! (id: "+id+")\n");
     }
 
     public void updateTaskDescription(int id, String description) { // add description by id
@@ -38,12 +38,28 @@ public class TaskManager {
             this.updateId();
         }
     }
-    public void clearTasks() {
+    public void clearTasks() { // clear all tasks
         tasks.clear();
         System.out.println("Success, cleared tasks!\n");
         this.updateId();
     }
 
+    public void markStatus(String markStatus) {
+        switch (status) {
+            case "mark-todo":
+                setStatus("todo");
+                break;
+            case "mark-done":
+                setStatus("done");
+                break;
+            case "mark-inprogress":
+                setStatus("in-progress");
+                break;
+            default:
+                System.err.println("Something went wrong with setting status.");
+                break;   
+        }
+    }
     
     public Task findTaskById(int id) { // find task by id
         for (Task task : tasks) {
@@ -69,7 +85,16 @@ public class TaskManager {
         }
         System.out.println("\n");
     }
+    public void listTasksByStatus(String status) { // list tasks
 
+        System.out.println("---Tasks by status: "+status+"\n"+label+"\n");
+        for (Task task : tasks) {
+            if (task.getStatus() == status) {
+                System.out.println(task);
+            }
+        }
+        System.out.println("\n");
+    }
 
     public static void main(String[] args) {
         TaskManager manager = new TaskManager();
