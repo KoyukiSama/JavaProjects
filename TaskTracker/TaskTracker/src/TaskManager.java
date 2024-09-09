@@ -17,4 +17,19 @@ public class TaskManager {
         tasks.add( new Task(id, description) );
     }
 
+    public void listTasks() {
+        System.out.println("Tasks:\n");
+        for (Task task : tasks) {
+            System.out.println(task);
+        }
+    }
+
+    public static void main(String[] args) {
+        TaskManager manager = new TaskManager();
+        manager.addTask("hello");
+        manager.addTask("get groceries");
+
+        manager.listTasks();
+    }
+
 }
