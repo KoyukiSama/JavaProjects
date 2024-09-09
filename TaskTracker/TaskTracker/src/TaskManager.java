@@ -53,13 +53,14 @@ public class TaskManager {
             case "mark-done":
                 task.setStatus("done");
                 break;
-            case "mark-inprogress":
+            case "mark-in-progress":
                 task.setStatus("in-progress");
                 break;
             default:
                 System.err.println("Something went wrong with setting status.");
                 break;   
         }
+        System.out.println("Success, marked "+id+" as "+task.getStatus()+"!\n");
     }
     
     public Task findTaskById(int id) { // find task by id
@@ -97,18 +98,12 @@ public class TaskManager {
         System.out.println("\n");
     }
 
-    public static void main(String[] args) {
+    /* public static void main(String[] args) {
         TaskManager manager = new TaskManager();
         manager.addTask("hello");
         manager.addTask("get groceries");
+        manager.addTask("third one");
 
-        manager.listTasksByStatus("todo");
-        manager.listTasksByStatus("todo");
-        manager.listTasksByStatus("todo");
-        manager.listTasks();
-
-        manager.markStatus();
-
-    }
+    } */
 
 }
