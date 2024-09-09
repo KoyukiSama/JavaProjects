@@ -17,13 +17,17 @@ public class TaskManager {
         tasks.add( new Task(id, description) );
     }
 
+    public String linebreakStart = "--------\\";
+    public String linebreakEnd = "--------/";
+    public String label = "id   status   description   updated   created\n\n"; //label placed above data
     public void listTasks() { // list tasks
-        System.out.println("Tasks:\n");
+        System.out.println(linebreakStart+" Tasks\n"+label);
         for (Task task : tasks) {
             System.out.println(task);
         }
+        System.out.println("\n"+linebreakEnd);
     }
-    
+
 
     public static void main(String[] args) {
         TaskManager manager = new TaskManager();
