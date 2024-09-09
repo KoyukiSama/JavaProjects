@@ -26,6 +26,9 @@ public class Task {
     public LocalDateTime getUpdatedAt() {return updatedAt;}
 
     //setters
+    public void setId(int id) {
+        this.id = id;
+    }
     public void setStatus(String status) {
         this.status = status;
         this.updatedAt = LocalDateTime.now();
