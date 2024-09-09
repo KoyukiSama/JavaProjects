@@ -44,16 +44,17 @@ public class TaskManager {
         this.updateId();
     }
 
-    public void markStatus(String markStatus) {
-        switch (status) {
+    public void markStatus(String markStatus, int id) {
+        Task task = findTaskById(id);
+        switch (markStatus) {
             case "mark-todo":
-                setStatus("todo");
+                task.setStatus("todo");
                 break;
             case "mark-done":
-                setStatus("done");
+                task.setStatus("done");
                 break;
             case "mark-inprogress":
-                setStatus("in-progress");
+                task.setStatus("in-progress");
                 break;
             default:
                 System.err.println("Something went wrong with setting status.");
@@ -101,12 +102,12 @@ public class TaskManager {
         manager.addTask("hello");
         manager.addTask("get groceries");
 
+        manager.listTasksByStatus("todo");
+        manager.listTasksByStatus("todo");
+        manager.listTasksByStatus("todo");
         manager.listTasks();
-        manager.deleteTask(2);
-        manager.addTask("go home");
-        manager.deleteTask(1);
-        manager.addTask("bye");
-        manager.listTasks();
+
+        manager.markStatus();
 
     }
 
