@@ -35,11 +35,7 @@ public class Task {
         this.updatedAt = LocalDateTime.now();
     }
 
-    // list display
-    public static String label() {
-        return "id   status   description   updated   created\n\n"; //label placed above data
-    }
-
+    // display
     public String toShortSymbol() {
         switch (status) {
             case "todo":
