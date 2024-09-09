@@ -35,5 +35,27 @@ public class Task {
         this.updatedAt = LocalDateTime.now();
     }
 
+    // list display
+    public static String label() {
+        return "id   status   description   updated   created\n\n"; //label placed above data
+    }
+
+    public String toShortSymbol() {
+        switch (status) {
+            case "todo":
+                return "X";
+            case "done":
+                return "V";
+            case "progress":
+                return ">";
+            default:
+                return "?";
+        }
+    }
+
+    @Override
+    public String toString() { // returns human readable string
+        return id+"    "+toShortSymbol()+"  "+description+"    "+updatedAt+"  "+createdAt;
+    }
 
 }
