@@ -35,13 +35,13 @@ public class TaskManager {
         } else {
             tasks.remove(task);
             System.out.println("Success, task deleted!\n");
-            tasks.updateId();
+            this.updateId();
         }
     }
     public void clearTasks() {
         tasks.clear();
         System.out.println("Success, cleared tasks!\n");
-        tasks.updateId();
+        this.updateId();
     }
 
     
