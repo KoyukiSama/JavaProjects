@@ -51,6 +51,13 @@ public class TaskManager {
         }
         return null;
     }
+    public void updateId() {
+        int newId = 1;
+        for (Task task : tasks) {
+            task.setId(newId);
+            newId++;
+        }
+    }
 
     public String label = "id   status   description   updated   created"; //label placed above data
     public void listTasks() { // list tasks
@@ -68,10 +75,10 @@ public class TaskManager {
         manager.addTask("get groceries");
 
         manager.listTasks();
-
-        manager.clearTasks();
-        manager.listTasks();
-        manager.clearTasks();
+        manager.deleteTask(2);
+        manager.addTask("go home");
+        manager.deleteTask(1);
+        manager.addTask("bye");
         manager.listTasks();
 
     }
