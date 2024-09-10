@@ -29,7 +29,7 @@ public class TaskCLI {
         switch (command) {
             case "add": // add update delete
                 if (attribute1 != null) {
-                    manager.addTask(attribute1);                
+                    manager.addTask(attribute1);
                 } else {
                     System.out.println("Error: Description is required for 'add' command.");
                 }
@@ -72,5 +72,7 @@ public class TaskCLI {
                 System.out.println("unknown error occured in TaskCLI switch statement\n\n"+syntax);
                 break;
         }
+
+        manager.saveTasks();
     }
 }
