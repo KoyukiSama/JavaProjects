@@ -1,6 +1,7 @@
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
-public class Task {
+public class Task implements Serializable{
 
     //fields
     private int id;
