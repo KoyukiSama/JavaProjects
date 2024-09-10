@@ -17,6 +17,7 @@ public class TaskFileHandler {
         }
     }
 
+    @SuppressWarnings("unchecked")
     public static ArrayList<Task> loadTasksFromFile() {
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(FILE_NAME))) {
             return (ArrayList<Task>) ois.readObject();
