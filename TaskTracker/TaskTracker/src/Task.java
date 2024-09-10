@@ -2,6 +2,7 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 public class Task implements Serializable{
+    private static final long serialVersionUID = 1L;
 
     //fields
     private int id;
