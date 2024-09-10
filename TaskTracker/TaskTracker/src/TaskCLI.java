@@ -19,7 +19,7 @@ public class TaskCLI {
             try {
                 attribute1id = Integer.parseInt(attribute1); // Convert to integer if needed
             } catch (NumberFormatException e) {
-                System.out.println("Error: Attribute1 is not a valid number: " + attribute1);
+                //System.err.println("Error: Attribute1 is not a valid number: " + attribute1); 
             }
         }
 
