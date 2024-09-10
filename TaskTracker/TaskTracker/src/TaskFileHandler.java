@@ -6,6 +6,24 @@ public class TaskFileHandler {
 
     private static final String FILE_NAME = "tasks.dat";
 
+    public static boolean CheckForFile() { // check and create file
+        File file = new File(FILE_NAME);
+        if (file.exists()) {
+            return true;
+        } else {
+            try {
+                if (file.createNewFile()) {
+                    System.out.println("Created new file: "+file.getName());
+                } else {
+                    System.out.println("Failed to created file");
+                }
+            } catch (IOException e) {
+                System.out.println("Failed to create file\nError: "+e);
+            }
+            return false;
+        }
+    }
+
 
     public static void saveTasksToFile(ArrayList<Task> tasks) {  //serialise objects into file
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(FILE_NAME))) {

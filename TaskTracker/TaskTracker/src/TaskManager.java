@@ -14,6 +14,7 @@ public class TaskManager {
     }
 
     private void loadTasks() {
+        TaskFileHandler.CheckForFile();
         this.tasks = new ArrayList<>(TaskFileHandler.loadTasksFromFile());
     }
 
