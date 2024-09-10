@@ -6,7 +6,7 @@ here's where I got my project from
 when I finish this version I think it'd be cool for me to expand upon it and make it a full on cli program.
 
 ## how to use command
-
+```
 Syntax: task-cli ... ...
 add "description"                -- add a task, with a description
 update id "description"          -- update an already existing task, id can be found with list command
@@ -20,7 +20,7 @@ list                             -- lists  {id  status  description  updatedTime
 list in-progress                 -- lists in-progress only
 list todo                        -- lists todo only
 list in-progress                 -- lists in-progress only
-
+```
 ## installing on linux pc
 you can create a file in your local binaries to execute this.
 
