@@ -2,15 +2,22 @@ import java.util.ArrayList;
 
 public class TaskManager {
 
-    private static final String FILE_NAME = "tasks.json"; // add more json later
-
     private ArrayList<Task> tasks;
 
     public TaskManager() {
         this.tasks = new ArrayList<>();
+        loadTasks();
     }
 
-    // methods
+    public void saveTasks() {
+        TaskFileHandler.saveTasksToFile(tasks);
+    }
+
+    private void loadTasks() {
+        this.tasks = new ArrayList<>(TaskFileHandler.loadTasksFromFile());
+    }
+
+
     public void addTask(String description) { // add task
         int id = tasks.size() + 1;
         tasks.add( new Task(id, description) );
