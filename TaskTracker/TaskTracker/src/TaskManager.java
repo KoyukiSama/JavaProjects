@@ -1,14 +1,13 @@
-import java.util.LinkedList;
-import java.util.List;
+import java.util.ArrayList;
 
 public class TaskManager {
 
-    private static final String FILE_NAME = "tasks.json";
+    private static final String FILE_NAME = "tasks.json"; // add more json later
 
-    private LinkedList<Task> tasks;
+    private ArrayList<Task> tasks;
 
     public TaskManager() {
-        this.tasks = new LinkedList<>();
+        this.tasks = new ArrayList<>();
     }
 
     // methods
@@ -100,7 +99,7 @@ public class TaskManager {
 
     /* public static void main(String[] args) {
         TaskManager manager = new TaskManager();
-        manager.addTask("hello");
+        manager .addTask("hello");
         manager.addTask("get groceries");
         manager.addTask("third one");
 
