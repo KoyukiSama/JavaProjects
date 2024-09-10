@@ -98,7 +98,7 @@ public class TaskManager {
 
         System.out.println("---Tasks by status: "+status+"\n"+label+"\n");
         for (Task task : tasks) {
-            if (task.getStatus() == status) {
+            if (task.getStatus().equals(status)) {
                 System.out.println(task);
             }
         }
