@@ -18,7 +18,7 @@ public class TaskFileHandler {
                     System.out.println("Failed to created file");
                 }
             } catch (IOException e) {
-                System.out.println("Failed to create file\nError: "+e);
+                System.out.println("Failed to create file\nError: "+e.getMessage());
             }
             return false;
         }
