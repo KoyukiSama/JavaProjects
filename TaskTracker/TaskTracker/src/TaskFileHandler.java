@@ -37,6 +37,11 @@ public class TaskFileHandler {
 
     @SuppressWarnings("unchecked")
     public static ArrayList<Task> loadTasksFromFile() {
+        File file = new File(FILE_NAME);
+        if (file.length() == 0) {
+            System.out.println("File is empty. No tasks to load.");
+            return new ArrayList<>();
+        }
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(FILE_NAME))) {
             return (ArrayList<Task>) ois.readObject();
         } catch (IOException | ClassNotFoundException e) {
