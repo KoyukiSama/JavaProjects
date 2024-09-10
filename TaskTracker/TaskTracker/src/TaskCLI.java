@@ -11,19 +11,16 @@ public class TaskCLI {
         }
 
         String command = args[0];
-        String attribute1 = null;
+        String attribute1 = (argc > 1) ? args[1] : null;
+        String attribute2 = (argc > 2) ? args[2] : null;
         int attribute1id = -1;
-        String attribute2 = null;
 
-        if (argc > 1) { // prevent touching memory that isn't that there.
-            attribute1 = args[1]; 
+        if (attribute1 != null) {
             try {
                 attribute1id = Integer.parseInt(attribute1); // Convert to integer if needed
             } catch (NumberFormatException e) {
                 System.out.println("Error: Attribute1 is not a valid number: " + attribute1);
             }
-        } if (argc > 2) {
-            attribute2 = args[2];
         }
 
         switch (command) {
