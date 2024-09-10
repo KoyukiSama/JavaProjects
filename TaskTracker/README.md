@@ -8,6 +8,7 @@ when I finish this version I think it'd be cool for me to expand upon it and mak
 ## how to use command
 ```
 Syntax: task-cli ... ...
+task-cli                         -- displays Syntax information
 add "description"                -- add a task, with a description
 update id "description"          -- update an already existing task, id can be found with list command
 delete id                        -- delete a task
