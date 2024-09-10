@@ -4,7 +4,7 @@ public class TaskCLI {
         TaskManager manager = new TaskManager();
 
         int argc = args.length;
-        String syntax = "Syntax: task-cli ... ...\nadd \"description\"\nupdate id \"description\"\ndelete id\n\nmark-in-progress id\nmark-done id\nmark-todo id\n\nlist --: listing shows the ids\nlist in-progress\nlist todo\nlist in-progress";
+        String syntax = "Syntax: task-cli ... ...\nadd \"description\"                -- add a task, with a description\nupdate id \"description\"          -- update an already existing task, id can be found with list command\ndelete id                        -- delete a task\n\nmark-in-progress id              -- mark a task to in-progress\nmark-done id                     -- mark a task as done\nmark-todo id                     -- mark a task as todo\n\nlist                             -- lists  {id  status  description  updatedTime creationTime}\nlist in-progress                 -- lists in-progress only\nlist todo                        -- lists todo only\nlist in-progress                 -- lists in-progress only";
         if (argc == 0) {
             System.out.println(syntax);
             return;
