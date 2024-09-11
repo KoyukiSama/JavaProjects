@@ -45,7 +45,9 @@ public class TaskCLI {
                     System.out.println("Error: Valid ID is required for 'delete' command.");
                 }
                 break;
-
+            case "clearall":
+                manager.clearTasks();
+                
 
             case "mark-in-progress": // marking
             case "mark-done":
