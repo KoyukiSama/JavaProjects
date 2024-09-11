@@ -47,7 +47,7 @@ public class TaskCLI {
                 break;
 
 
-            case "mark-inprogress": // marking
+            case "mark-in-progress": // marking
             case "mark-done":
             case "mark-todo":
                 if (attribute1id != -1) {
