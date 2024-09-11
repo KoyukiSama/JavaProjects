@@ -19,7 +19,9 @@ mark-todo id                     -- mark a task as todo
 list                             -- lists  {id  status  description  updatedTime creationTime}
 list in-progress                 -- lists in-progress only
 list todo                        -- lists todo only
-list in-progress                 -- lists in-progress only
+list done                        -- lists done only
+
+----- clear command add later
 
 ## installing on linux pc
 you can create a file in your local binaries to execute this.
