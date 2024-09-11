@@ -47,7 +47,7 @@ public class Task implements Serializable{
                 return "X";
             case "done":
                 return "V";
-            case "progress":
+            case "in-progress":
                 return ">";
             default:
                 return "?";
