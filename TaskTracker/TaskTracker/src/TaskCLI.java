@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class TaskCLI {
 
     public static void main(String[] args) {
@@ -10,68 +12,105 @@ public class TaskCLI {
             return;
         }
 
+        Scanner scan = new Scanner(System.in);
+
+        boolean stop = true;
         String command = args[0];
-        String attribute1 = (argc > 1) ? args[1] : null;
-        String attribute2 = (argc > 2) ? args[2] : null;
+        if (command.equals("session")) {
+            stop = false;
+        }
+        String attribute1 = null;
         int attribute1id = -1;
-
-        if (attribute1 != null) {
-            try {
-                attribute1id = Integer.parseInt(attribute1); // Convert to integer if needed
-            } catch (NumberFormatException e) {
-                //System.err.println("Error: Attribute1 is not a valid number: " + attribute1); 
-            }
-        }
-
-        switch (command) {
-            case "add": // add update delete
+        String attribute2 = null;
+        while (stop == false) {
+            
+            if (stop == false) {
+                attribute1 = (argc > 1) ? args[1] : null;
+                attribute2 = (argc > 2) ? args[2] : null;
                 if (attribute1 != null) {
-                    manager.addTask(attribute1);
-                } else {
-                    System.out.println("Error: Description is required for 'add' command.");
+                    try {
+                        attribute1id = Integer.parseInt(attribute1); // Convert to integer if needed
+                    } catch (NumberFormatException e) {
+                        //System.err.println("Error: Attribute1 is not a valid number: " + attribute1); 
+                    }
                 }
-                break;
-            case "update":
-                if (attribute1id != -1 && attribute2 != null) {
-                    manager.updateTaskDescription(attribute1id, attribute2);
-                } else {
-                    System.out.println("Error: Valid ID and description are required for 'update' command.");
+            } else {
+                System.out.print("task-cli ");
+                if (scan.hasNext()) {
+                    if (scan.hasNext("[A-Za-z]+")) { // set attribute1
+                        attribute1 = scan.next();
+                    } else if (scan.hasNext("[0-9]+")) { // set attribute1 id
+                        attribute1id = scan.nextInt();
+                        if (scan.hasNext("[A-Za-z]+")) { // set attribute 2
+                            attribute2 = scan.next();
+                        }
+                    }
+                } else { // no args
+                    System.out.println(syntax);
                 }
-                break;
-            case "delete":
-                if (attribute1id != -1) {
-                    manager.deleteTask(attribute1id);
-                } else {
-                    System.out.println("Error: Valid ID is required for 'delete' command.");
-                }
-                break;
-            case "clearall":
-                manager.clearTasks();
-                break;
-
-            case "mark-in-progress": // marking
-            case "mark-done":
-            case "mark-todo":
-                if (attribute1id != -1) {
-                    manager.markStatus(command, attribute1id);                
-                } else {
-                    System.out.println("Error: Valid ID is required for '" + command + "' command.");
-                }
-                break;
+            }
+        
 
 
-            case "list": // listing
-                if (argc > 1) {
-                    manager.listTasksByStatus(attribute1);
-                } else {
-                    manager.listTasks();
+
+            switch (command) {
+                case "exit": { // quits session.
+                    if (attribute1 != null) {
+                        stop = true;
+                        break;
+                    }
                 }
-                break;
-            default:
-                System.out.println("unknown error occured in TaskCLI switch statement\n\n"+syntax);
-                break;
+
+                case "add": // add update delete
+                    if (attribute1 != null) {
+                        manager.addTask(attribute1);
+                    } else {
+                        System.out.println("Error: Description is required for 'add' command.");
+                    }
+                    break;
+                case "update":
+                    if (attribute1id != -1 && attribute2 != null) {
+                        manager.updateTaskDescription(attribute1id, attribute2);
+                    } else {
+                        System.out.println("Error: Valid ID and description are required for 'update' command.");
+                    }
+                    break;
+                case "delete":
+                    if (attribute1id != -1) {
+                        manager.deleteTask(attribute1id);
+                    } else {
+                        System.out.println("Error: Valid ID is required for 'delete' command.");
+                    }
+                    break;
+                case "clearall":
+                    manager.clearTasks();
+                    break;
+
+                case "mark-in-progress": // marking
+                case "mark-done":
+                case "mark-todo":
+                    if (attribute1id != -1) {
+                        manager.markStatus(command, attribute1id);                
+                    } else {
+                        System.out.println("Error: Valid ID is required for '" + command + "' command.");
+                    }
+                    break;
+
+
+                case "list": // listing
+                    if (argc > 1) {
+                        manager.listTasksByStatus(attribute1);
+                    } else {
+                        manager.listTasks();
+                    }
+                    break;
+                default:
+                    System.out.println("unknown error occured in TaskCLI switch statement\n\n"+syntax);
+                    break;
+            }
+
+            manager.saveTasks();
         }
-
-        manager.saveTasks();
+        scan.close();
     }
 }
