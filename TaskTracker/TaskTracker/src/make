@@ -1,0 +1,4 @@
+#!/bin/bash
+
+javac Task.java TaskCLI.java TaskFileHandler.java TaskManager.java
+jar cfm task-cli.jar manifest.txt *.class

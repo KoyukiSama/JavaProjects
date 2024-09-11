@@ -47,7 +47,7 @@ public class TaskCLI {
                 break;
             case "clearall":
                 manager.clearTasks();
-                
+                break;
 
             case "mark-in-progress": // marking
             case "mark-done":
