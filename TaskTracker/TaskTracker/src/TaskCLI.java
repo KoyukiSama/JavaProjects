@@ -4,6 +4,12 @@ public class TaskCLI {
     
     static final String syntax = "Syntax: task-cli ... ...\nadd \"description\"                -- add a task, with a description\nupdate id \"description\"          -- update an already existing task, id can be found with list command\ndelete id                        -- delete a task\nclear-all                        -- deletes all tasks at once\n\nmark-in-progress id              -- mark a task to in-progress\nmark-done id                     -- mark a task as done\nmark-todo id                     -- mark a task as todo\n\nlist                             -- lists  {id  status  description  updatedTime creationTime}\nlist in-progress                 -- lists in-progress only\nlist todo                        -- lists todo only\nlist done                        -- lists done only\n\nsession                          -- start a session, keeps the program running";
 
+    public static void clearConsole() {
+        for (int i = 0; i < 50; i++) {
+            System.out.println();
+        }
+    }
+
     public static void main(String[] args) {
         TaskManager manager = new TaskManager();
 
@@ -28,7 +34,15 @@ public class TaskCLI {
                 attribute1 = (inputArgs.length > 1) ? inputArgs[1].toLowerCase() : null;
                 attribute2 = (inputArgs.length > 2) ? inputArgs[2].toLowerCase() : null;
 
-                stop = processCommand(manager, command, attribute1, attribute2);
+                clearConsole(); // displays list
+                if (command.equals("list")) {
+                    stop = processCommand(manager, command, attribute1, attribute2);
+                } else {
+                    stop = processCommand(manager, command, attribute1, attribute2);
+                    System.err.println("");
+                    processCommand(manager, "list", attribute1, attribute2);
+                }
+
             }
             scan.close();
         } else {
