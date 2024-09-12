@@ -11,6 +11,7 @@ Syntax: task-cli ... ...
 add "description"                -- add a task, with a description
 update id "description"          -- update an already existing task, id can be found with list command
 delete id                        -- delete a task
+clear-all                        -- deletes all tasks at once
 
 mark-in-progress id              -- mark a task to in-progress
 mark-done id                     -- mark a task as done
@@ -21,7 +22,7 @@ list in-progress                 -- lists in-progress only
 list todo                        -- lists todo only
 list done                        -- lists done only
 
------ clear command add later
+session                          -- start a session, keeps the program running
 
 ## installing on linux pc
 you can create a file in your local binaries to execute this.
