@@ -103,7 +103,7 @@ public class TaskCLI {
 
 
             case "list": // listing
-                if (attribute2 != null) {
+                if (attribute1 != null) {
                     manager.listTasksByStatus(attribute1);
                 } else {
                     manager.listTasks();
