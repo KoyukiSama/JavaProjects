@@ -41,7 +41,7 @@ public class TaskCLI {
                 } else {
                     stop = processCommand(manager, command, attribute1, attribute2);
                     System.err.println("");
-                    processCommand(manager, "list", attribute1, attribute2);
+                    processCommand(manager, "list", null, null);
                 }
             }
             scan.close();
