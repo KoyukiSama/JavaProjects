@@ -24,9 +24,9 @@ public class TaskCLI {
 
         if (command.equals("session")) {
             Scanner scan = new Scanner(System.in);
+            TaskManager manager = new TaskManager(true);
 
             while (!stop) {
-                TaskManager manager = new TaskManager(true);
 
                 System.out.print("\ntask-cli> ");
                 String inputLine = scan.nextLine();
@@ -43,7 +43,6 @@ public class TaskCLI {
                     System.err.println("");
                     processCommand(manager, "list", attribute1, attribute2);
                 }
-
             }
             scan.close();
         } else {
@@ -108,8 +107,11 @@ public class TaskCLI {
             case "list": // listing
                 if (attribute1 != null) {
                     manager.listTasksByStatus(attribute1);
+                    System.out.println("got into the list with status");
                 } else {
+                    System.out.println("got into the list");
                     manager.listTasks();
+                    System.out.println("got into the list and did listtasks");
                 }
                 break;
             default:
