@@ -1,4 +1,5 @@
 import java.io.*;
+import java.util.List;
 import java.util.ArrayList;
 
 
@@ -25,7 +26,7 @@ public class TaskFileHandler {
     }
 
 
-    public static void saveTasksToFile(ArrayList<Task> tasks) {  //serialise objects into file
+    public static void saveTasksToFile(List<Task> tasks) {  //serialise objects into file
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(FILE_NAME))) {
             oos.writeObject(tasks);
             System.out.println("Tasks successfully saved!");
@@ -36,14 +37,14 @@ public class TaskFileHandler {
     }
 
     @SuppressWarnings("unchecked")
-    public static ArrayList<Task> loadTasksFromFile() {
+    public static List<Task> loadTasksFromFile() {
         File file = new File(FILE_NAME);
         if (file.length() == 0) {
             System.out.println("File is empty. No tasks to load.");
             return new ArrayList<>();
         }
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(FILE_NAME))) {
-            return (ArrayList<Task>) ois.readObject();
+            return (List<Task>) ois.readObject();
         } catch (IOException | ClassNotFoundException e) {
             System.out.println("Error while loading tasks from file: " + e.getMessage());
             e.printStackTrace();

@@ -1,11 +1,17 @@
 import java.util.ArrayList;
+import java.util.List;
+import java.util.LinkedList;
 
 public class TaskManager {
 
-    private ArrayList<Task> tasks;
+    private List<Task> tasks;
 
-    public TaskManager() {
-        this.tasks = new ArrayList<>();
+    public TaskManager(boolean useLinkedList) {
+        if (useLinkedList) {
+            this.tasks = new LinkedList<>();
+        } else {
+            this.tasks = new ArrayList<>();
+        }
         loadTasks();
     }
 
@@ -15,7 +21,10 @@ public class TaskManager {
 
     private void loadTasks() {
         TaskFileHandler.CheckForFile();
-        this.tasks = new ArrayList<>(TaskFileHandler.loadTasksFromFile());
+        List<Task> loadedTasks = TaskFileHandler.loadTasksFromFile();
+        if (loadedTasks != null) {
+            this.tasks.addAll(loadedTasks);
+        }
     }
 
 

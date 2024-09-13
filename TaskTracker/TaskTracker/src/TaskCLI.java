@@ -11,7 +11,6 @@ public class TaskCLI {
     }
 
     public static void main(String[] args) {
-        TaskManager manager = new TaskManager();
 
         if (args.length == 0) {
             System.out.println(syntax);
@@ -27,6 +26,8 @@ public class TaskCLI {
             Scanner scan = new Scanner(System.in);
 
             while (!stop) {
+                TaskManager manager = new TaskManager(true);
+
                 System.out.print("\ntask-cli> ");
                 String inputLine = scan.nextLine();
                 String[] inputArgs = inputLine.split(" ");
@@ -46,6 +47,8 @@ public class TaskCLI {
             }
             scan.close();
         } else {
+            TaskManager manager = new TaskManager(true);
+
             stop = processCommand(manager, command, attribute1, attribute2);
         }
     }
