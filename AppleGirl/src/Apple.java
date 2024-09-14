@@ -1,6 +1,6 @@
 public class Apple implements Runnable{
     
-    private int x = 0; //fields
+    private int x = 0; // fields
     private int y = 0;
     private static char A = 'O';
     private boolean isFalling = true;
@@ -13,13 +13,16 @@ public class Apple implements Runnable{
 
 
     ////// logic /////
+    
+    //display apple?
+
     @Override
     public void run() {
         while (isFalling) {
             try {
                 Thread.sleep(fallspeed);
                 fall();
-            } catch (InterruptedException e) {
+            } catch (InterruptedException e) { // for catch apple or end game
                 Thread.currentThread().interrupt();
                 break;
             }
