@@ -34,13 +34,15 @@ public class AppleGirlGame {
     ////// game start ///////
 
     public static void main(String[] args) {
+        AppleGirlGame game = new AppleGirlGame(25, 25);
 
+        game.printActionGrid();
     }
 
 
     ////// extra game logic /////
 
-    public void printGrid() {
+    public void printActionGrid() {
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
                 System.out.print(grid[y][x]);
@@ -48,4 +50,6 @@ public class AppleGirlGame {
             System.out.println("");
         }
     }
+
+        // print background grid
 }
