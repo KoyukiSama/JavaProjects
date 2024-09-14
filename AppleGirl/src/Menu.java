@@ -1,11 +1,14 @@
-public class Menu {
+public class Menu implements Runnable{
     
     private char[][] grid; // grid
     private int width;
     private int height;
 
+    private boolean upKey = false;
+    private boolean downKey = false;
+
     private final int arrowXPos = 31;
-    private int arrowYPos = 7;
+    private int arrowCur = 1;
     
     private final Object[][] options = { // 0 "option", 1 y, 2 option x
         {"Start", 7, 35,},
@@ -44,19 +47,40 @@ public class Menu {
             }
         }
     }
-    private void cursorGrid() { // is for selecting
+    private void cursorGrid() { // draws cursor onto screen
         String cursor = "---#";
         char[] cursorChars = cursor.toCharArray();
-        int yPos = arrowYPos;
+        int yPos = (Integer) options[arrowCur][1];
         int xPos = arrowXPos;
         for (int i = 0; i < options.length; i++) {
             grid[yPos][xPos+i] = cursorChars[i];
         }
     }
 
+    ////// cursor moving ///////
+    private void moveCursor() {
+        
+    }
+    private void moveUp() {
+        int firstOption = 0;
+        if (arrowCur == firstOption) {
+            arrowCur = options.length - 1;
+        } else {
+            arrowCur--;
+        }
+    }
+    private void moveDown() {
+        int lastOption = options.length - 1;
+        if (arrowCur == lastOption) {
+            arrowCur = 0;
+        } else {
+            arrowCur++;
+        }
+        
+    }
 
     /////// display, update , initialise grids /////
-    public void printGrid() {  // print out current grid
+    private void printGrid() {  // print out current grid
         System.out.println("");
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
@@ -65,7 +89,7 @@ public class Menu {
             System.out.println("");
         }
     }
-    private void updateGrid() { // updates and puts together the grid
+    public void updateGrid() { // updates and puts together the grid
         borderGrid();      // v
         optionsGrid();     // v initialise
         cursorGrid();
