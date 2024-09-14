@@ -4,14 +4,22 @@ public class Menu {
     private int width;
     private int height;
 
+    Object[][] options = {
+        {"Start", 7, 10},
+        {"option2", 9, 10},
+        {"option3", 11, 10},
+    };
+
     public Menu(int width, int height) {
         this.width = width;
         this.height = height;
         this.grid = new char[height][width];
     }
 
+    
 
-    private void popGrid() { // populates grid
+    ////// draw onto the grids //////
+    private void borderGrid() { // populates grid
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
                 if (y == 0 || y == height-1 || x == 0 || x == width-1) {
@@ -23,13 +31,23 @@ public class Menu {
         }
     }
     private void optionsGrid() { // shows options grid
-        for (int y = 0; y < height; y++) {
-            for (int x = 0; x < width; x++) {
-                grid[y][x] = ' ';
+        for (int i = 0; i < options.length; i++) {
+            String option = (String) options[i][0];     // converts Object into String
+            char[] optionChars = option.toCharArray();  // converts String into charArr
+            int yPos = (Integer) options[i][1];         // sets initial y position
+            int xPos = (Integer) options[i][2];         // sets initial x position
+            for (int j = 0; j < option.length(); j++) {
+                grid[yPos][xPos+j] = optionChars[j];    // draws options onto the plate
             }
         }
     }
-    public void printSquare() {
+    private void cursorGrid() { // is for selecting
+
+    }
+
+
+    /////// display, update , initialise grids /////
+    public void printGrid() {  // print out current grid
         System.out.println("");
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
@@ -38,6 +56,11 @@ public class Menu {
             System.out.println("");
         }
     }
+    private void updateGrid() { // updates and puts together the grid
+        borderGrid();
+        optionsGrid();
+    }
+    
 
     public static void main(String[] args) {
         int width;
@@ -51,7 +74,7 @@ public class Menu {
         }
 
         Menu menu = new Menu(width, height);
-        menu.popGrid();
-        menu.printSquare();
+        menu.updateGrid();
+        menu.printGrid();
     }
 }
