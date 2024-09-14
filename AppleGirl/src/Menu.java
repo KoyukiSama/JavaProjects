@@ -57,7 +57,9 @@ public class Menu implements Runnable{
         }
     }
 
-    ////// cursor moving ///////
+
+
+    ////// cursor movement ///////
     @Override
     public void run() {
         while (upKey || downKey) {
@@ -89,8 +91,9 @@ public class Menu implements Runnable{
         } else {
             arrowCur++;
         }
-        
     }
+
+
 
     /////// display, update , initialise grids /////
     private void printGrid() {  // print out current grid
@@ -111,6 +114,7 @@ public class Menu implements Runnable{
     }
 
 
+
     ////// Setters and getters //////
     public void setDownKey(boolean bool) {
         this.downKey = bool;
@@ -119,7 +123,13 @@ public class Menu implements Runnable{
         this.upKey = bool;
     }
     
+    public String getArrowSelection() {
+        return (String) options[arrowCur][0];
+    }
 
+
+
+    //////    main    //////
     public static void main(String[] args) {
         int width;
         int height;
