@@ -5,9 +5,9 @@ public class Menu {
     private int height;
 
     Object[][] options = {
-        {"Start", 7, 10},
-        {"option2", 9, 10},
-        {"option3", 11, 10},
+        {"Start", 7, 35},
+        {"option2", 9, 35},
+        {"option3", 11, 35},
     };
 
     public Menu(int width, int height) {
@@ -16,7 +16,7 @@ public class Menu {
         this.grid = new char[height][width];
     }
 
-    
+
 
     ////// draw onto the grids //////
     private void borderGrid() { // populates grid
@@ -57,8 +57,10 @@ public class Menu {
         }
     }
     private void updateGrid() { // updates and puts together the grid
-        borderGrid();
-        optionsGrid();
+        borderGrid();      // v
+        optionsGrid();     // v initialise
+
+        printGrid();       // v print
     }
     
 
