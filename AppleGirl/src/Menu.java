@@ -7,13 +7,14 @@ public class Menu implements Runnable{
     private boolean upKey = false;
     private boolean downKey = false;
 
-    private final int arrowXPos = 31;
-    private int arrowCur = 1;
+    private final int arrowXPos = opXPos - 5;
+    private int arrowCur = 0;
     
+    private final static int opXPos = 40;
     private final Object[][] options = { // 0 "option", 1 y, 2 option x
-        {"Start", 7, 35,},
-        {"option2", 9, 35},
-        {"option3", 11, 35}
+        {"Start", 7, opXPos,},
+        {"option2", 9, opXPos},
+        {"option3", 11, opXPos}
     };
 
     public Menu(int width, int height) {
@@ -49,17 +50,20 @@ public class Menu implements Runnable{
     }
     private void cursorGrid() { // draws cursor onto screen
         String cursor = "---#";
+        String cursor2 = "#---";
         char[] cursorChars = cursor.toCharArray();
+        char[] cursorChars2 = cursor2.toCharArray();
         int yPos = (Integer) options[arrowCur][1];
         int xPos = arrowXPos;
-        for (int i = 0; i < options.length; i++) {
+        String curOption = (String) options[arrowCur][0];
+        int optionLEN = curOption.length();
+        for (int i = 0; i < cursor.length(); i++) {
             grid[yPos][xPos+i] = cursorChars[i];
+            grid[yPos][xPos+i+6+optionLEN] = cursorChars2[i];
         }
     }
 
-
-
-    ////// cursor movement ///////
+    ////// cursor moving ///////
     @Override
     public void run() {
         while (upKey || downKey) {
@@ -93,8 +97,6 @@ public class Menu implements Runnable{
         }
     }
 
-
-
     /////// display, update , initialise grids /////
     private void printGrid() {  // print out current grid
         System.out.println("");
@@ -114,7 +116,6 @@ public class Menu implements Runnable{
     }
 
 
-
     ////// Setters and getters //////
     public void setDownKey(boolean bool) {
         this.downKey = bool;
@@ -127,9 +128,6 @@ public class Menu implements Runnable{
         return (String) options[arrowCur][0];
     }
 
-
-
-    //////    main    //////
     public static void main(String[] args) {
         int width;
         int height;
