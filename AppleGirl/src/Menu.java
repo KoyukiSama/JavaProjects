@@ -77,6 +77,5 @@ public class Menu {
 
         Menu menu = new Menu(width, height);
         menu.updateGrid();
-        menu.printGrid();
     }
 }
