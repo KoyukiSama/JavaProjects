@@ -59,8 +59,20 @@ public class Menu implements Runnable{
 
     ////// cursor moving ///////
     @Override
-    private void run() {
-        while 
+    public void run() {
+        while (upKey || downKey) {
+            try {
+                if (upKey) {
+                    moveUp();
+                } else if (downKey) {
+                    moveDown();
+                }
+                Thread.sleep(300);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+                break;
+            }
+        }
     }
     private void moveUp() {
         int firstOption = 0;
