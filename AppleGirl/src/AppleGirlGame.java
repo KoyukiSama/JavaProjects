@@ -43,6 +43,7 @@ public class AppleGirlGame {
     ////// extra game logic /////
 
     public void printActionGrid() {
+        System.out.println("");
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
                 System.out.print(grid[y][x]);
