@@ -34,14 +34,29 @@ public class Basket implements Runnable {
     }
 
     public void goLeft() { // moving input logic
-        x--;
+        if (x == positionStart()) {
+            x = positionEnd();
+        } else {
+            x--;
+        }  
     }
     public void goRight() {
+        if (x == positionEnd()) {
+            x = positionStart();
+        }
         x++;
     }
 
 
-    // goRight
+    
+    public int positionEnd() {
+        int position = game.getWidth() - 1;
+        return position; // implement get width in AppleGirlGame
+    }
+    public int positionStart() {
+        int position = 0;
+        return position;
+    }
 
 
     /////// Setters and getters //////
@@ -52,5 +67,10 @@ public class Basket implements Runnable {
     public int getY() {
         return y;
     }
+    public char getBasket() {
+        return V;
+    }
+
+
 
 }
