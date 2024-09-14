@@ -17,7 +17,7 @@ public class Basket implements Runnable {
 
     ////// logic methods //////
 
-    // goLeft
+    /// movement ///
     @Override
     public void run() {   // 
         while (leftKey || rightKey) {
@@ -34,7 +34,6 @@ public class Basket implements Runnable {
             }
         }
     }
-
     public void goLeft() { // moving input logic
         if (x == positionStart()) {
             x = positionEnd();
@@ -48,8 +47,6 @@ public class Basket implements Runnable {
         }
         x++;
     }
-
-
     
     public int positionEnd() {
         int position = gameVars.getWidth() - 1;
@@ -59,6 +56,9 @@ public class Basket implements Runnable {
         int position = 0;
         return position;
     }
+
+
+    /// more ///
 
 
     /////// Setters and getters //////
@@ -73,6 +73,14 @@ public class Basket implements Runnable {
         return V;
     }
 
-
+    public void setMoveSpeed(int moveSpeed) {
+        this.moveSpeed = moveSpeed;
+    }
+    public void setRightKey(boolean bool) {
+        this.rightKey = bool;
+    }
+    public void setLeftKey(boolean bool) {
+        this.leftKey = bool;
+    }
 
 }
