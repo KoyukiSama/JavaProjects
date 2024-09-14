@@ -45,5 +45,8 @@ public class Apple implements Runnable{
     public void setFallspeed(int speed) { // set speed
         this.fallspeed = speed;
     }
+    public void setIsFalling(boolean bool) {
+        this.isFalling = bool;
+    }
 
 }
