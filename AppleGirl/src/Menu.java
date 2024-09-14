@@ -4,10 +4,13 @@ public class Menu {
     private int width;
     private int height;
 
-    Object[][] options = {
-        {"Start", 7, 35},
+    private final int arrowXPos = 31;
+    private int arrowYPos = 7;
+    
+    private final Object[][] options = { // 0 "option", 1 y, 2 option x
+        {"Start", 7, 35,},
         {"option2", 9, 35},
-        {"option3", 11, 35},
+        {"option3", 11, 35}
     };
 
     public Menu(int width, int height) {
@@ -42,7 +45,13 @@ public class Menu {
         }
     }
     private void cursorGrid() { // is for selecting
-
+        String cursor = "---#";
+        char[] cursorChars = cursor.toCharArray();
+        int yPos = arrowYPos;
+        int xPos = arrowXPos;
+        for (int i = 0; i < options.length; i++) {
+            grid[yPos][xPos+i] = cursorChars[i];
+        }
     }
 
 
@@ -59,6 +68,7 @@ public class Menu {
     private void updateGrid() { // updates and puts together the grid
         borderGrid();      // v
         optionsGrid();     // v initialise
+        cursorGrid();
 
         printGrid();       // v print
     }
