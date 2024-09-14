@@ -58,8 +58,9 @@ public class Menu implements Runnable{
     }
 
     ////// cursor moving ///////
-    private void moveCursor() {
-        
+    @Override
+    private void run() {
+        while 
     }
     private void moveUp() {
         int firstOption = 0;
@@ -95,6 +96,15 @@ public class Menu implements Runnable{
         cursorGrid();
 
         printGrid();       // v print
+    }
+
+
+    ////// Setters and getters //////
+    public void setDownKey(boolean bool) {
+        this.downKey = bool;
+    }
+    public void setUpKey(boolean bool) {
+        this.upKey = bool;
     }
     
 
