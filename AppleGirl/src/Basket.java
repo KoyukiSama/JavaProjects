@@ -6,10 +6,12 @@ public class Basket implements Runnable {
     private boolean leftKey = false;
     private boolean rightKey = false;
     private int moveSpeed = 200;
+    private AppleGirlGame gameVars;
 
-    public Basket(int x, int y) { // constructor
+    public Basket(int x, int y, AppleGirlGame gameVars) { // constructor
         this.x = x;
         this.y = y;
+        this.gameVars = gameVars;
     }
 
 
@@ -50,7 +52,7 @@ public class Basket implements Runnable {
 
     
     public int positionEnd() {
-        int position = game.getWidth() - 1;
+        int position = gameVars.getWidth() - 1;
         return position; // implement get width in AppleGirlGame
     }
     public int positionStart() {

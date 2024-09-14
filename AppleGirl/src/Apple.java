@@ -2,7 +2,7 @@ public class Apple implements Runnable{
     
     private int x = 0; // fields
     private int y = 0;
-    private static char A = 'O';
+    private static char apple = 'O';
     private boolean isFalling = true;
     private int fallspeed = 1000;
 
@@ -40,6 +40,9 @@ public class Apple implements Runnable{
     }
     public int getY() {
         return y;
+    }
+    public char getApple() {
+        return apple;
     }
     
     public void setFallspeed(int speed) { // set speed

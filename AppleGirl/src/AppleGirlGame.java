@@ -8,8 +8,16 @@ public class AppleGirlGame {
         this.height = height;
     }
 
+    ////// getters and setters //////
+    public int getHeight() {
+        return height;
+    }
+    public int getWidth() {
+        return width;
+    }
+
 
     public static void main(String[] args) {
-
+        
     }
 }
