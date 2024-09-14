@@ -2,6 +2,9 @@
 
 ## Mechanics to be made
 ```
+Menu
+    make options shrink with the UI border size
+
 Grid
 
 apple
