@@ -4,21 +4,22 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class Frame extends JFrame {
+public class Game extends JFrame {
     private JLabel scoreLabel;
 
-    public Frame() {
+    public Game() {
 
         ///// FRAME //////
 		this.setTitle("Snake Game");
 		//this.setIconImage();     // needs import javax.swing.ImageIcon
-
 		this.setSize(500, 500);
-
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setResizable(false);
-
 		this.getContentPane().setBackground(new Color(0xfecdb8));
+
+
+        GamePanel gamePanel = new GamePanel();
+        this.add(gamePanel);
 
         ///// JPanel /////
         JPanel topBar = new JPanel();
@@ -35,7 +36,8 @@ public class Frame extends JFrame {
 
 	}
 
-    public static void main(String[] args) {
-        new Frame();
+    public void setScoreLabel(int score) {
+        scoreLabel.setText("SCORE: " + score);
     }
+
 }
