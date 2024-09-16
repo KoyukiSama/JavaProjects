@@ -30,7 +30,7 @@ public class Snake {
         }
     }
 
-    private boolean isPrevKey(Key curDirection) { // if prevkey, returns true
+    private boolean isPrevDirection(Key curDirection) { // if prevkey, returns true
         if (curDirection == prevDirection) {
             return true;
         } else {
