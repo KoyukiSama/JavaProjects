@@ -91,6 +91,6 @@ public class Snake {
         moveHead();
 
         prevDirection = getDirection();
-        snake[head] = Util.calcXYtoArray(x, y, w);
+        snake[head] = Util.XYtoIndex(x, y, w);
     }
 }
