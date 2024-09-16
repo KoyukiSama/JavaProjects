@@ -1,13 +1,14 @@
 public class Snake {
 
-    private int[] snake;
+    private int[] snake;            // initialise RING BUFFER
+    private int snakeLength;
     private int w;      // width and height
     private int h;
     private int x;      // cords of head
     private int y;
     private int head;   // head and tail (stores index)
     private int tail;
-    private int prevKey; // previous key press
+    private Key prevDirection; // previous key press
 
     public Snake(int width, int height) { // initialise snake
         this.w = width;
@@ -15,62 +16,81 @@ public class Snake {
         this.x = 2;
         this.y = width - 2;   // start in left down corner
         this.snake = new int[width*height];
-        this.prevKey = LEFT;
+        this.prevDirection = RIGHT;
+        this.snakeLength = 1;
     }
 
 
-    // increment position //
+    // Helper methods //
     private int increment(int i) {
         if (snake[i] != w*h) {
-            i++;
+            return i++;
         } else {
-            i = 0;
+            return i = 0;
         }
     }
 
+    private boolean isPrevKey(Key curDirection) { // if prevkey, returns true
+        if (curDirection == prevDirection) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+    private void moveHead() {
+        Key curDirection = getDirection();
+                                            // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! IMPLEMENT KEY STUFF LATER
+        if (isPrevDirection(curDirection)) {
+            switch (curDirection) {
+                case UP:
+                    y--;
+                    break;
+                case RIGHT:
+                    x--:
+                    break;
+                case DOWN:
+                    y++;
+                    break;
+                case LEFT:
+                    x++;
+                    break;
+                default:
+                    break;
+            }
+        } else {
+            switch (curDirection) {   
+                case UP:
+                    y++;
+                    break;
+                case RIGHT:
+                    x++:
+                    break;
+                case DOWN:
+                    y--;
+                    break;
+                case LEFT:
+                    x--;
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+
+
     // updating head and tail //
     private void cutTail() {
-        snake[tail] = -1;
-        increment(tail);
+        snake[tail] = -1; // set garbage value to -1
+        tail = increment(tail);
     }
 
     private void growHead() {
         int lastHead = head;
-        increment(head);
+        head = increment(head);
+        moveHead();
 
-        switch (getKey()) {    // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! IMPLEMENT KEY STUFF LATER
-            case UP:              // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! IMPLEMENT ENUM DIRECTIONS
-                if (prevKey == DOWN) {
-                    y--;
-                } else {
-                    y++;
-                }
-                break;
-            case RIGHT:
-                if (prevKey == LEFT) {
-                    x--;
-                } else {
-                    x++;
-                }
-                break;
-            case DOWN:
-                if (prevKey == UP) {
-                    y++;
-                } else {
-                    y--;
-                }
-                break;
-            case LEFT:
-                if (prevKey == RIGHT) {
-                    x++;
-                } else {
-                    x--;
-                }
-                break;
-            default:
-                break;
-        }
-        snake[head] = y*w+x;
+        prevDirection = getDirection();
+        snake[head] = Util.calcXYtoArray(x, y, w);
     }
-
 }
