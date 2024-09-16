@@ -78,6 +78,13 @@ public class Snake {
         }
     }
 
+    private void updSnakeLength() {
+        if (tail > head) {
+            this.snakeLength = head + w*h - tail;
+        } else {
+            this.snakeLength = head - tail;
+        }
+    }
 
     // updating head and tail //
     private void cutTail() {
@@ -92,5 +99,48 @@ public class Snake {
 
         prevDirection = getDirection();
         snake[head] = Util.XYtoIndex(x, y, w);
+    }
+
+
+    //  self collission //
+    private boolean isSelfCollide() {         /// !!!!!!!!!!!!!!!!! add into game over later
+        int counter = 0;
+        for (int pos : snake) {
+            if (snake[head] == pos) {
+                counter++;
+            }
+        }
+        if (counter < 2) { // head will occur once on it self 
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+
+    //// update snake ////
+    private void updSnake() {
+        cutTail();
+        growHead();
+        updSnakeLength();
+    }
+
+
+
+    // getters and setters //
+    public int getHeadPosition() {
+        return snake[head];
+    }
+    public int getHead() {
+        return head;
+    }
+    public int getTail() {
+        return tail;
+    }
+    public int[] getSnake() {
+        return snake;
+    }
+    public int getSnakeLength() {
+        return snakeLength;
     }
 }
