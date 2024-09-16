@@ -86,6 +86,7 @@ public class Snake {
         }
     }
 
+    
     // updating head and tail //
     private void cutTail() {
         snake[tail] = -1; // set garbage value to -1
