@@ -24,12 +24,8 @@ public class Snake {
 
 
     // Helper methods //
-    private int increment(int i) {
-        if (snake[i] != w*h) {
-            return i++;
-        } else {
-            return i = 0;
-        }
+    public int increment(int i) {
+        return (i + 1) % (w * h);
     }
 
     private boolean isPrevDirection(Key curDirection) { // if prevkey, returns true
