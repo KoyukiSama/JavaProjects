@@ -15,6 +15,8 @@ public class Snake {
         this.h = height;
         this.x = 2;
         this.y = width - 2;   // start in left down corner
+        this.head = 0;        // set as 0
+        this.tail = 0;
         this.snake = new int[width*height];
         this.prevDirection = RIGHT;
         this.snakeLength = 1;
@@ -47,7 +49,7 @@ public class Snake {
                     y--;
                     break;
                 case RIGHT:
-                    x--:
+                    x--;
                     break;
                 case DOWN:
                     y++;
@@ -64,7 +66,7 @@ public class Snake {
                     y++;
                     break;
                 case RIGHT:
-                    x++:
+                    x++;
                     break;
                 case DOWN:
                     y--;
@@ -121,8 +123,8 @@ public class Snake {
 
     //// update snake ////
     private void updSnake() {
-        cutTail();
         growHead();
+        cutTail();
         updSnakeLength();
     }
 
