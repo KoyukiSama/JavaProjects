@@ -85,10 +85,8 @@ public class Snake {
     }
 
     private void growHead(Key curKey) {
-        int lastHead = head;
         head = increment(head);
         moveHead(curKey);
-
         snake[head] = Util.XYtoIndex(x, y, w);
     }
 
