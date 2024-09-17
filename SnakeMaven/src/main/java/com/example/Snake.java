@@ -20,6 +20,7 @@ public class Snake {
         this.snake = new int[width*height];
         this.prevDirection = Key.RIGHT;
         this.snakeLength = 1;
+        snake[head] = Util.XYtoIndex(x, y, w);
     }
 
 
