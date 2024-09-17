@@ -1,12 +1,20 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
+
   <groupId>com.example</groupId>
   <artifactId>SnakeMaven</artifactId>
   <packaging>jar</packaging>
   <version>1.0-SNAPSHOT</version>
   <name>SnakeMaven</name>
   <url>http://maven.apache.org</url>
+
+  <properties>
+    <jline.version>3.21.0</jline.version> <!-- Define the JLine version here -->
+    <maven.compiler.source>1.8</maven.compiler.source> <!-- Set Java source version -->
+    <maven.compiler.target>1.8</maven.compiler.target> <!-- Set Java target version -->
+  </properties>
+
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -14,5 +22,11 @@
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
+
+    <dependency>
+      <groupId>org.jline</groupId>
+      <artifactId>jline</artifactId>
+      <version>${jline.version}</version>
+      </dependency>
   </dependencies>
 </project>
