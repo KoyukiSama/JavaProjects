@@ -28,18 +28,10 @@ public class Snake {
     public int increment(int i) {
         return (i + 1) % (w * h);
     }
-
-    private boolean isPrevDirection(Key curDirection) { // if prevkey, returns true
-        if (curDirection == prevDirection) {
-            return true;
-        } else {
-            return false;
-        }
-    }
     
     private void moveHead(Key curDirection) {
                                            
-        if (isPrevDirection(curDirection)) { // inversion
+        if (prevDirection == curDirection) { // inversion
             switch (curDirection) {
                 case UP:
                     y--;
@@ -74,6 +66,7 @@ public class Snake {
                     break;
             }
         }
+        prevDirection = curDirection;
     }
 
     private void updSnakeLength() {
@@ -96,7 +89,6 @@ public class Snake {
         head = increment(head);
         moveHead(curKey);
 
-        prevDirection = getDirection();
         snake[head] = Util.XYtoIndex(x, y, w);
     }
 
