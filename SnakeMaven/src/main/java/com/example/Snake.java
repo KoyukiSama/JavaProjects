@@ -18,7 +18,7 @@ public class Snake {
         this.head = 0;        // set as 0
         this.tail = 0;
         this.snake = new int[width*height];
-        this.prevDirection = RIGHT;
+        this.prevDirection = Key.RIGHT;
         this.snakeLength = 1;
     }
 
@@ -106,7 +106,7 @@ public class Snake {
 
 
     //  self collission //
-    private boolean isSelfCollide() {         /// !!!!!!!!!!!!!!!!! add into game over later
+    public boolean isSelfCollide() {         /// !!!!!!!!!!!!!!!!! add into game over later
         int counter = 0;
         for (int pos : snake) {
             if (snake[head] == pos) {
