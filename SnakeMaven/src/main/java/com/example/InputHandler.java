@@ -16,7 +16,7 @@ public class InputHandler {
         this.linereader = LineReaderBuilder.builder().terminal(terminal).build();
     }
 
-    public char readInput() throws Exception{
+    public Key readInput() throws Exception{
         int input = terminal.reader().read(); // reads character input
         return mapToKey(input);
 

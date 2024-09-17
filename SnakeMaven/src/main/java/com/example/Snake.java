@@ -40,10 +40,9 @@ public class Snake {
         }
     }
     
-    private void moveHead() {
-        Key curDirection = getDirection();
-                                            // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! IMPLEMENT KEY STUFF LATER
-        if (isPrevDirection(curDirection)) {
+    private void moveHead(Key curDirection) {
+                                           
+        if (isPrevDirection(curDirection)) { // inversion
             switch (curDirection) {
                 case UP:
                     y--;
@@ -95,10 +94,10 @@ public class Snake {
         tail = increment(tail);
     }
 
-    private void growHead() {
+    private void growHead(Key curKey) {
         int lastHead = head;
         head = increment(head);
-        moveHead();
+        moveHead(curKey);
 
         prevDirection = getDirection();
         snake[head] = Util.XYtoIndex(x, y, w);
@@ -122,8 +121,8 @@ public class Snake {
 
 
     //// update snake ////
-    private void updSnake() {
-        growHead();
+    private void updSnake(Key curKey) {
+        growHead(curKey);
         cutTail();
         updSnakeLength();
     }
