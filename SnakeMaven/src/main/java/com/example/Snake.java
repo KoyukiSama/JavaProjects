@@ -99,11 +99,7 @@ public class Snake {
                 counter++;
             }
         }
-        if (counter < 2) { // head will occur once on it self 
-            return false;
-        } else {
-            return true;
-        }
+        return counter > 1;
     }
 
 
