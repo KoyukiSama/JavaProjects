@@ -22,6 +22,20 @@ public class InputHandler implements Runnable {
         this.currentDirection = Key.RIGHT;
         this.running = true;
         this.inputThread = new Thread(this);
+        this.inputThread.start();
+    }
+
+    @Override
+    public void run() {
+        try {
+            while (running) {
+                int input = terminal.reader().read();
+                Key key = mapToKey(input);
+                currentDirection = key;
+                }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 
