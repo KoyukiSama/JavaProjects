@@ -1,18 +1,23 @@
 package com.example;
 
+import org.jline.terminal.Terminal;
+
 public class Game {
     public static final int WIDTH = 50;
     public static final int HEIGHT = 20;
-    public static final int GAMESPEED = 500;
+    public static final int GAMESPEED = 2000; // in ms
     // ---------------------------------------------------------------add a menu with score board
 
     public static void main(String[] args) {
         Snake snake = new Snake(WIDTH, HEIGHT);
-        GamePanel gamePanel = new GamePanel(WIDTH, HEIGHT, snake);
         InputHandler inputHandler = null;
 
         try {
             inputHandler = new InputHandler();
+            Terminal terminal = inputHandler.getTerminal();
+            GamePanel gamePanel = new GamePanel(WIDTH, HEIGHT, snake, terminal);
+
+
             boolean isGameOver = false;
             Key currentDirection = Key.RIGHT;
 
