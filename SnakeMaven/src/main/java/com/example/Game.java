@@ -39,7 +39,7 @@ public class Game {
             e.printStackTrace();
         } finally {
             if (inputHandler != null) {
-                inputHandler.cleanup();
+                inputHandler.stop();
             }
         }
 
