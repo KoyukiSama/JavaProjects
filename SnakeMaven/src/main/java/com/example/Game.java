@@ -5,7 +5,8 @@ import org.jline.terminal.Terminal;
 public class Game {
     public static final int WIDTH = 50;
     public static final int HEIGHT = 20;
-    public static final int GAMESPEED = 2000; // in ms
+    public static final int HORIZONTALSPEED = 200; // in ms
+    public static final int VERTICALSPEED = 400;
     // ---------------------------------------------------------------add a menu with score board
 
     public static void main(String[] args) {
@@ -32,7 +33,11 @@ public class Game {
 
                 gamePanel.updateGrid();                     // updates GRID
 
-                Thread.sleep(GAMESPEED);                    // sets GAMESPEED
+                if (currentDirection == Key.LEFT || currentDirection == Key.RIGHT) {
+                    Thread.sleep(HORIZONTALSPEED);
+                } else if (currentDirection == Key.UP || currentDirection == Key.DOWN) {
+                    Thread.sleep(VERTICALSPEED);
+                }
             }
 
         } catch (Exception e){
