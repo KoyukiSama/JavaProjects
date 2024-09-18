@@ -2,6 +2,7 @@ package com.example;
 
 import org.jline.terminal.Terminal;
 import org.jline.terminal.TerminalBuilder;
+import org.jline.utils.NonBlockingReader;
 
 public class InputHandler {
 
@@ -17,8 +18,9 @@ public class InputHandler {
     }
 
     public Key readInput() throws Exception {
-        if (terminal.reader().ready()) {
-            int input = terminal.reader().read();
+        NonBlockingReader reader = terminal.reader();
+        if (reader.ready()) {
+            int input = reader.read();
             return mapToKey(input);
         }
         return null;
@@ -51,5 +53,9 @@ public class InputHandler {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public Terminal getTerminal() {
+        return terminal;
     }
 }
