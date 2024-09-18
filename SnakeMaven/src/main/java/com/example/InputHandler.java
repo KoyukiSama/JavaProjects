@@ -4,9 +4,12 @@ import org.jline.terminal.Terminal;
 import org.jline.terminal.TerminalBuilder;
 import org.jline.utils.NonBlockingReader;
 
-public class InputHandler {
+public class InputHandler implements Runnable {
 
     private Terminal terminal;
+    private volatile Key currentDirection;
+    private Thread inputThread;
+    private boolean running;
 
     public InputHandler() throws Exception {
         this.terminal = TerminalBuilder.builder()
@@ -15,6 +18,11 @@ public class InputHandler {
                 .system(true)
                 .build();
         terminal.enterRawMode();
+
+        this.currentDirection = Key.RIGHT;
+        this.running = true;
+        this.inputThread = new Thread(this);
+
     }
 
     public Key readInput() throws Exception {
