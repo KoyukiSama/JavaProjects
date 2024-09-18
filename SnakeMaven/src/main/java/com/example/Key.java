@@ -24,4 +24,13 @@ public enum Key {
         }
         return opposite;
     }
+
+    public static Boolean checkOpposite(Key prevKey, Key curKey) {
+        curKey = getOppositeKey(curKey);
+        if (curKey == prevKey) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
