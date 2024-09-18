@@ -1,28 +1,30 @@
 package com.example;
 
-import org.jline.reader.LineReader;
-import org.jline.reader.LineReaderBuilder;
 import org.jline.terminal.Terminal;
 import org.jline.terminal.TerminalBuilder;
 
 public class InputHandler {
 
     private Terminal terminal;
-    private LineReader linereader;
 
     public InputHandler() throws Exception {
-        this.terminal = TerminalBuilder.terminal();
+        this.terminal = TerminalBuilder.builder()
+                .jna(false)
+                .jansi(true)
+                .system(true)
+                .build();
         terminal.enterRawMode();
-        this.linereader = LineReaderBuilder.builder().terminal(terminal).build();
     }
 
-    public Key readInput() throws Exception{
-        int input = terminal.reader().read(); // reads character input
-        return mapToKey(input);
-
+    public Key readInput() throws Exception {
+        if (terminal.reader().ready()) {
+            int input = terminal.reader().read();
+            return mapToKey(input);
+        }
+        return null;
     }
 
-        private Key mapToKey(int inputChar) {
+    private Key mapToKey(int inputChar) {
         switch (inputChar) {
             case 'w':
             case 'W':
@@ -42,13 +44,6 @@ public class InputHandler {
     }
 
     /// getters and setters///
-    public Terminal getTerminal() {
-        return terminal;
-    }
-
-    public LineReader getLineReader() {
-        return linereader;
-    }
 
     public void cleanup() {
         try {
