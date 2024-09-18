@@ -22,7 +22,7 @@ public class GamePanel {
     }
 
     private void printScore() {
-        System.out.println("SCORE: " /*+ Score.getScore()*/);  // update with score later
+        terminal.writer().println("SCORE: " /*+ Score.getScore()*/);  // update with score later
     }
 
     private void cleanGrid() {
