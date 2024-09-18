@@ -63,7 +63,7 @@ public class InputHandler implements Runnable {
             case 'A':
                 return Key.LEFT;
             default:
-                return null;
+                return currentDirection;
         }
     }
 
