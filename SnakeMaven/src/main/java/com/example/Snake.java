@@ -34,40 +34,24 @@ public class Snake {
     
     private void moveHead(Key curDirection) {
                                            
-        if (prevDirection == curDirection) { // inversion
-            switch (curDirection) {
-                case UP:
-                    y--;
-                    break;
-                case RIGHT:
-                    x--;
-                    break;
-                case DOWN:
-                    y++;
-                    break;
-                case LEFT:
-                    x++;
-                    break;
-                default:
-                    break;
-            }
-        } else {
-            switch (curDirection) {   
-                case UP:
-                    y++;
-                    break;
-                case RIGHT:
-                    x++;
-                    break;
-                case DOWN:
-                    y--;
-                    break;
-                case LEFT:
-                    x--;
-                    break;
-                default:
-                    break;
-            }
+        if (Key.checkOpposite(prevDirection, curDirection)) { // checks if opposite is true
+            curDirection = Key.getOppositeKey(curDirection);
+        }
+        switch (curDirection) {   
+            case UP:
+                y--;
+                break;
+            case RIGHT:
+                x++;
+                break;
+            case DOWN:
+                y++;
+                break;
+            case LEFT:
+                x--;
+                break;
+            default:
+                break;
         }
         prevDirection = curDirection;
     }
