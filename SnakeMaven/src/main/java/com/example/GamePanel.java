@@ -1,3 +1,6 @@
+package com.example;
+
+
 public class GamePanel {
     private char[] grid;
     private int gridLength;
@@ -31,15 +34,21 @@ public class GamePanel {
     }
 
     private void snakeGrid() {
-        int snakeSegment[] = snake.getSnake();
+        int snakeSegments[] = snake.getSnake();
         int snakeLength = snake.getSnakeLength();
         int tail = snake.getTail();
-        
+        int gridSize = w*h;
+  
         for (int i = 0, j = tail; i < snakeLength; i++, j++) {
-            if (j == w) {
+            if (j >= snakeSegments.length) {  // snakeSegments is actually the whole grid long not just snake body
                 j = 0;
             } 
-            grid[snakeSegment[j]] = 'O';
+            int snakeSegment = snakeSegments[j];
+            if (snakeSegment >= 0 && snakeSegment < gridSize) {
+                grid[snakeSegment] = 'O';  // Mark the snake segment on the grid
+            } else {
+                System.out.println("Warning: Snake segment out of grid bounds: " + snakeSegment);
+            }
         }
     }
 
@@ -63,8 +72,8 @@ public class GamePanel {
     }
 
     public static void main(String[] args) {
-        int width = 50;
-        int height = 20;
+        int width = 7;
+        int height = 3;
         Snake snake = new Snake(width, height);
         GamePanel gamePanel = new GamePanel(width, height, snake);
         gamePanel.updateGrid();

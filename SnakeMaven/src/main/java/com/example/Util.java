@@ -1,3 +1,5 @@
+package com.example;
+
 public class Util {
 
     public static int XYtoIndex(int x, int y, int width) {

@@ -1,3 +1,5 @@
+package com.example;
+
 import java.security.Key;
 
 import org.jline.reader.LineReader;

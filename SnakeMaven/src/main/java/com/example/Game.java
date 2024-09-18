@@ -1,3 +1,5 @@
+package com.example;
+
 public class Game {
 
     // ---------------------------------------------------------------add a menu with score board

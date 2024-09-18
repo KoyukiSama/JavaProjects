@@ -1,0 +1,6 @@
+{
+    "java.project.sourcePaths": [
+        "Snake/src",
+        "SnakeMaven/src/main/java/com/example"
+    ]
+}

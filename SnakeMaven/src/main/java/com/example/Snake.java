@@ -1,3 +1,5 @@
+package com.example;
+
 public class Snake {
 
     private int[] snake;            // initialise RING BUFFER
@@ -13,14 +15,15 @@ public class Snake {
     public Snake(int width, int height) { // initialise snake
         this.w = width;
         this.h = height;
-        this.x = 2;
-        this.y = width - 2;   // start in left down corner
+        this.x = 1;
+        this.y = height - 2;   // start in left down corner
         this.head = 0;        // set as 0
         this.tail = 0;
         this.snake = new int[width*height];
         this.prevDirection = Key.RIGHT;
         this.snakeLength = 1;
-        snake[head] = Util.XYtoIndex(x, y, w);
+        snake[tail] = Util.XYtoIndex(x, y, width);
+        snake[head] = Util.XYtoIndex(x, y, width);
     }
 
 
@@ -104,7 +107,7 @@ public class Snake {
 
 
     //// update snake ////
-    private void updSnake(Key curKey) {
+    public void updSnake(Key curKey) {
         growHead(curKey);
         cutTail();
         updSnakeLength();
