@@ -58,9 +58,9 @@ public class Snake {
 
     private void updSnakeLength() {
         if (tail > head) {
-            this.snakeLength = head + w*h - tail;
+            this.snakeLength = (head + w*h - tail) + 1;
         } else {
-            this.snakeLength = head - tail;
+            this.snakeLength = (head - tail) + 1;
         }
     }
 
