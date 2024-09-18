@@ -22,8 +22,8 @@ public class InputHandler implements Runnable {
         this.currentDirection = Key.RIGHT;
         this.running = true;
         this.inputThread = new Thread(this);
-
     }
+
 
     public Key readInput() throws Exception {
         NonBlockingReader reader = terminal.reader();
@@ -55,12 +55,17 @@ public class InputHandler implements Runnable {
 
     /// getters and setters///
 
-    public void cleanup() {
+    public void stop() {
+        running = false;
         try {
             terminal.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public Key getCurrentDirection() {
+        return currentDirection;
     }
 
     public Terminal getTerminal() {
