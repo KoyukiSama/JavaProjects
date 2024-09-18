@@ -62,6 +62,8 @@ public class GamePanel {
         }
     }
 
+    //// MAIN METHODS TO BE USED ////
+
     public void updateGrid() {
         printScore(); // score display
 
@@ -71,11 +73,5 @@ public class GamePanel {
         printGrid(); // print whole grid
     }
 
-    public static void main(String[] args) {
-        int width = 50;
-        int height = 20;
-        Snake snake = new Snake(width, height);
-        GamePanel gamePanel = new GamePanel(width, height, snake);
-        gamePanel.updateGrid();
-    }
+    
 }
