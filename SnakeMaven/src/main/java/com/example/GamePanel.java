@@ -1,5 +1,7 @@
 package com.example;
 
+import org.jline.terminal.Terminal;
+import org.jline.utils.InfoCmp.Capability;
 
 public class GamePanel {
     private char[] grid;
@@ -8,13 +10,15 @@ public class GamePanel {
     private int h;
 
     private Snake snake;
+    private Terminal terminal;
 
-    public GamePanel(int width, int height, Snake snake) {
+    public GamePanel(int width, int height, Snake snake, Terminal terminal) {
         this.grid = new char[width*height];
         this.gridLength = width*height;
         this.w = width;
         this.h = height;
         this.snake = snake;
+        this.terminal = terminal;
     }
 
     private void printScore() {
@@ -55,16 +59,22 @@ public class GamePanel {
     private void printGrid() {
         for (int i = 0; i < gridLength; i++) {
             int x = Util.IndextoX(i, w); // converts the current index to x y values
-            System.out.print(grid[i]);
+            terminal.writer().print(grid[i]);
             if (x == w-1) {
-                System.out.println();
+                terminal.writer().println();    // writer prints into a buffer that flush will print out later
             }
         }
+        terminal.flush();
     }
 
     //// MAIN METHODS TO BE USED ////
 
     public void updateGrid() {
+        /// clearing screen ///
+        terminal.puts(Capability.clear_screen);
+        terminal.flush();
+
+        /// printing grid ///
         printScore(); // score display
 
         cleanGrid();  // builds grid
