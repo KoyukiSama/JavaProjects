@@ -77,9 +77,16 @@ public class Snake {
         snake[head] = Util.XYtoIndex(x, y, w);
     }
 
+    // collission //
+    private boolean isWallCollide() {
+        if (x == 0 || x == w-1 || y == 0 || y == w-1) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
-    //  self collission //
-    public boolean isSelfCollide() {         /// !!!!!!!!!!!!!!!!! add into game over later
+    private boolean isSelfCollide() {         /// !!!!!!!!!!!!!!!!! add into game over later
         int counter = 0;
         for (int pos : snake) {
             if (snake[head] == pos) {
@@ -89,6 +96,15 @@ public class Snake {
         return counter > 1;
     }
 
+    ///// MAIN METHODS TO BE USED /////
+    //// death collission ////
+    public boolean isCollide() {
+        if (isSelfCollide() || isWallCollide()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
     //// update snake ////
     public void updSnake(Key curKey) {
