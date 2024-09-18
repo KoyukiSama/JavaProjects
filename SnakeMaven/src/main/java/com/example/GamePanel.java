@@ -72,8 +72,8 @@ public class GamePanel {
     }
 
     public static void main(String[] args) {
-        int width = 7;
-        int height = 3;
+        int width = 50;
+        int height = 20;
         Snake snake = new Snake(width, height);
         GamePanel gamePanel = new GamePanel(width, height, snake);
         gamePanel.updateGrid();

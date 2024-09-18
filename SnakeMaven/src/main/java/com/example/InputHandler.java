@@ -1,7 +1,5 @@
 package com.example;
 
-import java.security.Key;
-
 import org.jline.reader.LineReader;
 import org.jline.reader.LineReaderBuilder;
 import org.jline.terminal.Terminal;
