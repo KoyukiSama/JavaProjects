@@ -16,16 +16,11 @@ public class Game {
             inputHandler = new InputHandler();
             Terminal terminal = inputHandler.getTerminal();
             GamePanel gamePanel = new GamePanel(WIDTH, HEIGHT, snake, terminal);
-
-
+            
             boolean isGameOver = false;
-            Key currentDirection = Key.RIGHT;
 
             while (!isGameOver) {
-                Key userInput = inputHandler.readInput();
-                if (userInput != null) {                    // gets DIRECTION from INPUT
-                    currentDirection = userInput;
-                }
+                Key currentDirection = inputHandler.getCurrentDirection();
 
                 snake.updSnake(currentDirection);           // moves SNAKE
 
