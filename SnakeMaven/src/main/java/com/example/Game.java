@@ -11,6 +11,7 @@ public class Game {
 
     public static void main(String[] args) {
         Snake snake = new Snake(WIDTH, HEIGHT);
+        Food food = new Food(WIDTH, HEIGHT, snake);
         Level level = new Level();
         Score score = new Score(level);
         InputHandler inputHandler = null;
@@ -26,6 +27,7 @@ public class Game {
                 Key currentDirection = inputHandler.getCurrentDirection();
 
                 score.updScore();
+                food.updFood();
                 snake.updSnake(currentDirection);           // moves SNAKE
 
                 if (snake.isCollide()) {                    // checks GAMEOVER
