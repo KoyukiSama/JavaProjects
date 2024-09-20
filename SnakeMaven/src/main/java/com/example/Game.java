@@ -20,7 +20,7 @@ public class Game {
         try {
             inputHandler = new InputHandler();
             Terminal terminal = inputHandler.getTerminal();
-            GamePanel gamePanel = new GamePanel(WIDTH, HEIGHT, snake, score, level, terminal);
+            GamePanel gamePanel = new GamePanel(WIDTH, HEIGHT, snake, food, score, level, terminal);
             
             boolean isGameOver = false;
 

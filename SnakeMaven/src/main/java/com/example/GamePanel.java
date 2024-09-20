@@ -10,16 +10,18 @@ public class GamePanel {
     private int h;
 
     private Snake snake;
+    private Food food;
     private Score score;
     private Level level;
     private Terminal terminal;
 
-    public GamePanel(int width, int height, Snake snake, Score score, Level level, Terminal terminal) {
+    public GamePanel(int width, int height, Snake snake, Food food, Score score, Level level, Terminal terminal) {
         this.grid = new char[width*height];
         this.gridLength = width*height;
         this.w = width;
         this.h = height;
         this.snake = snake;
+        this.food = food;
         this.score = score;
         this.level = level;
         this.terminal = terminal;
@@ -60,6 +62,11 @@ public class GamePanel {
         }
     }
 
+    private void foodGrid() {
+        int foodLocation = food.getFood();
+        grid[foodLocation] = '@';
+    }
+
     private void printGrid() {
         for (int i = 0; i < gridLength; i++) {
             int x = Util.IndextoX(i, w); // converts the current index to x y values
@@ -89,6 +96,7 @@ public class GamePanel {
 
         cleanGrid();  // builds grid
         snakeGrid();  // adds snake
+        foodGrid(); // adds food
 
         printGrid(); // print whole grid
     }

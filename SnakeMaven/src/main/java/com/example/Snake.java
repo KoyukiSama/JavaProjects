@@ -123,7 +123,9 @@ public class Snake {
     //// update snake ////
     public void updSnake(Key curKey) {
         growHead(curKey);
-        cutTail();
+        if (!isEatFood()) {
+            cutTail();
+        }
         updSnakeLength();
     }
 
