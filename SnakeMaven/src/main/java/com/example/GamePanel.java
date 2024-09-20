@@ -2,6 +2,7 @@ package com.example;
 
 import org.jline.terminal.Terminal;
 import org.jline.utils.InfoCmp.Capability;
+import java.util.ArrayList;
 
 public class GamePanel {
     private char[] grid;
@@ -68,8 +69,11 @@ public class GamePanel {
     }
 
     private void enemyXGrid() {
-        int enemyX1Location = level.getEnemyX();
-        grid[enemyX1Location] = 'X';
+        ArrayList<Integer> enemyXList = level.getEnemyX();
+        int enemyXListLEN = enemyXList.size();
+        for (int i = 0; i < enemyXListLEN; i++) {
+            grid[enemyXList.get(i)] = 'X';
+        }
     }
 
     private void printGrid() {

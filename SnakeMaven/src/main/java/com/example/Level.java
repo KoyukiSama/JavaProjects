@@ -1,15 +1,15 @@
 package com.example;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.ArrayList;
 
 public class Level {
     private int level;
     private int w;
     private int h;
     private Snake snake;
-    private Food food;
     private int foodPos;
 
-    private int enemyX1;
+    private ArrayList<Integer> enemyXList;
 
     public Level(int width, int height, Snake snake, Food food) {
 
@@ -18,44 +18,58 @@ public class Level {
         this.h = height;
 
         this.snake = snake;
-        this.food = food;
         this.foodPos = food.getFood();
-
+        this.enemyXList = new ArrayList<>();
     }
 
-    public void calcEnemyX() {
-        int x = 0;
-        int y = 0;
-        int index = 0;
-        int[] arrSnake = snake.getSnake();
-        boolean valid = false;
-        while (!valid) {
-            x = ThreadLocalRandom.current().nextInt(1, w-1);    // generates random number,
-            y = ThreadLocalRandom.current().nextInt(1, h-1);    // and excludes borders
-            index = Util.XYtoIndex(x, y, w); // food index
+    private void calcEnemyX() {
+        for (int i = 0; i < enemyXList.size(); i++) {
+            int x = 0;
+            int y = 0;
+            int index = 0;
+            int[] arrSnake = snake.getSnake();
+            boolean valid = false;
+            while (!valid) {
+                x = ThreadLocalRandom.current().nextInt(1, w-1);    // generates random number,
+                y = ThreadLocalRandom.current().nextInt(1, h-1);    // and excludes borders
+                index = Util.XYtoIndex(x, y, w); // food index
 
-            valid = true;
-            for (int pos : arrSnake) {
-                if (pos == index) {
+                valid = true;
+                for (int snakePos : arrSnake) {
+                    if (snakePos == index) {
+                        valid = false;
+                    }
+                }
+                if (foodPos == index) {
                     valid = false;
                 }
             }
-            if (foodPos == index) {
-                valid = false;
-            }
+            enemyXList.set(i, index); 
         }
-        enemyX1 = index;
+    }
+    private void addEnemyX(int allowed) { // allowed = how many are allowed on the field at the current level
+        if (enemyXList.size() < allowed) {
+            enemyXList.add(null);
+        }
+        calcEnemyX();
+    }
+    private void enemyXSpawn() { // works in reversed way, starts at bottom
+        if (level >= 15) {
+            addEnemyX(3);
+        } else if (level >= 10) {
+            addEnemyX(2);
+        } else if (level >= 5) {
+            addEnemyX(1);
+        }
     }
 
     public void updLevel() {
         level += 1;
-        if (level >= 5) {
-            calcEnemyX();
-        }
+        enemyXSpawn();
     }
 
-    public int getEnemyX() {
-        return enemyX1;
+    public ArrayList<Integer> getEnemyX() {
+        return enemyXList;
     }
     public int getLevel() {
         return level;

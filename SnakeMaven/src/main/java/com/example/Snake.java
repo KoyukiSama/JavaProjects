@@ -1,4 +1,5 @@
 package com.example;
+import java.util.ArrayList;
 
 public class Snake {
 
@@ -100,7 +101,12 @@ public class Snake {
     }
 
     private boolean isEnemyCollide() {
-        return snake[head] == level.getEnemyX();
+        ArrayList<Integer> enemyXList = level.getEnemyX();
+        int enemyXListLEN = enemyXList.size();
+        for (int i = 0; i < enemyXListLEN; i++) { // go through enemyX
+            if (snake[head] == enemyXList.get(i)) { return true; }
+        }
+        return false;
     }
 
     private boolean isFoodCollide() {
