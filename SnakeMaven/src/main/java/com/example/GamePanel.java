@@ -60,18 +60,14 @@ public class GamePanel {
         }
     }
 
-    private void printLevel() {
-        String levelCount = level.getLevel();
-        terminal.writer().print(" LEVEL: " + levelCount);
-    }
-
     private void printGrid() {
         for (int i = 0; i < gridLength; i++) {
             int x = Util.IndextoX(i, w); // converts the current index to x y values
+            int y = Util.IndextoY(i, w);
             terminal.writer().print(grid[i]);
             if (x == w-1) {
-                if (x == 1) {                           //!!!!!// prints stats
-                    printLevel();
+                if (y == 0) {                           //!!!!!// prints stats
+                    terminal.writer().print("  | Level: " + level.getLevel());
                 }                                          
 
 
