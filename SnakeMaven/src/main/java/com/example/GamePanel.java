@@ -10,14 +10,18 @@ public class GamePanel {
     private int h;
 
     private Snake snake;
+    private Score score;
+    private Level level;
     private Terminal terminal;
 
-    public GamePanel(int width, int height, Snake snake, Terminal terminal) {
+    public GamePanel(int width, int height, Snake snake, Score score, Level level, Terminal terminal) {
         this.grid = new char[width*height];
         this.gridLength = width*height;
         this.w = width;
         this.h = height;
         this.snake = snake;
+        this.score = score;
+        this.level = level;
         this.terminal = terminal;
     }
 
@@ -56,11 +60,21 @@ public class GamePanel {
         }
     }
 
+    private void printLevel() {
+        String levelCount = level.getLevel();
+        terminal.writer().print(" LEVEL: " + levelCount);
+    }
+
     private void printGrid() {
         for (int i = 0; i < gridLength; i++) {
             int x = Util.IndextoX(i, w); // converts the current index to x y values
             terminal.writer().print(grid[i]);
             if (x == w-1) {
+                if (x == 1) {                           //!!!!!// prints stats
+                    printLevel();
+                }                                          
+
+
                 terminal.writer().println();    // writer prints into a buffer that flush will print out later
             }
         }

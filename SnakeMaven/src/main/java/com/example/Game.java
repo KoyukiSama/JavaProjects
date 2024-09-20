@@ -11,12 +11,14 @@ public class Game {
 
     public static void main(String[] args) {
         Snake snake = new Snake(WIDTH, HEIGHT);
+        Level level = new Level();
+        Score score = new Score();
         InputHandler inputHandler = null;
 
         try {
             inputHandler = new InputHandler();
             Terminal terminal = inputHandler.getTerminal();
-            GamePanel gamePanel = new GamePanel(WIDTH, HEIGHT, snake, terminal);
+            GamePanel gamePanel = new GamePanel(WIDTH, HEIGHT, snake, score, level, terminal);
             
             boolean isGameOver = false;
 
