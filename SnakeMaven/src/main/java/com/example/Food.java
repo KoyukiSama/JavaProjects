@@ -12,6 +12,7 @@ public class Food {
         this.w = width;
         this.h = height;
         this.snake = snake;
+        calcFood();
     }
 
     private void calcFood() {

@@ -8,6 +8,11 @@ public class Level {
         this.level = 0;
     }
 
+    public void updLevel() {
+        level += 1;
+    }
+
+
     public int getLevel() {
         return level;
     }
