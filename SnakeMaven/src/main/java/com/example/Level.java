@@ -8,7 +8,11 @@ public class Level {
         this.level = 0;
     }
 
-    public String getLevel() {
+    public int getLevel() {
+        return level;
+    }
+
+    public String getStrLevel() {
         String strLevel = Integer.toString(level);
         return strLevel;
     }
