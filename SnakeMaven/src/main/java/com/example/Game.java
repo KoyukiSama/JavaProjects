@@ -13,7 +13,8 @@ public class Game {
         Snake snake = new Snake(WIDTH, HEIGHT);
         Food food = new Food(WIDTH, HEIGHT, snake);
         snake.setFood(food);
-        Level level = new Level();
+        Level level = new Level(WIDTH, HEIGHT, snake, food);
+        snake.setLevel(level);
         Score score = new Score(level);
         InputHandler inputHandler = null;
 

@@ -13,6 +13,7 @@ public class Snake {
     private Key prevDirection; // previous key press
 
     private Food food;
+    private Level level;
 
     public Snake(int width, int height) { // initialise snake
         this.w = width;
@@ -98,18 +99,18 @@ public class Snake {
         return counter > 1;
     }
 
+    private boolean isEnemyCollide() {
+        return snake[head] == level.getEnemyX();
+    }
+
     private boolean isFoodCollide() {
-        if (snake[head] == food.getFood()) {
-            return true;
-        } else {
-            return false;
-        }
+        return snake[head] == food.getFood();
     }
 
     ///// MAIN METHODS TO BE USED /////
     //// death collission ////
     public boolean isCollide() {
-        if (isSelfCollide() || isWallCollide()) {
+        if (isSelfCollide() || isWallCollide() || isEnemyCollide()) {
             return true;
         } else {
             return false;
@@ -150,5 +151,8 @@ public class Snake {
 
     public void setFood(Food food) {
         this.food = food;
+    }
+    public void setLevel(Level level) {
+        this.level = level;
     }
 }

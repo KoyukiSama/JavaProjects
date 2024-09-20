@@ -67,6 +67,11 @@ public class GamePanel {
         grid[foodLocation] = '@';
     }
 
+    private void enemyXGrid() {
+        int enemyX1Location = level.getEnemyX();
+        grid[enemyX1Location] = 'X';
+    }
+
     private void printGrid() {
         for (int i = 0; i < gridLength; i++) {
             int x = Util.IndextoX(i, w); // converts the current index to x y values
@@ -97,7 +102,10 @@ public class GamePanel {
         cleanGrid();  // builds grid
         snakeGrid();  // adds snake
         foodGrid(); // adds food
-
+        int curLevel = level.getLevel();
+        if (curLevel >= 5) {
+            enemyXGrid();
+        }
         printGrid(); // print whole grid
     }
 
