@@ -5,8 +5,8 @@ import org.jline.terminal.Terminal;
 public class Game {
     public static final int WIDTH = 50;
     public static final int HEIGHT = 20;
-    public static final int HORIZONTALSPEED = 200; // in ms
-    public static final int VERTICALSPEED = 400;
+    public static int HORIZONTALSPEED = 200; // in ms
+    public static int VERTICALSPEED = HORIZONTALSPEED*2;
     // ---------------------------------------------------------------add a menu with score board
 
     public static void main(String[] args) {
@@ -32,6 +32,8 @@ public class Game {
                     level.updLevel();
                     score.updScore();
                     food.updFood();
+                    HORIZONTALSPEED *= 0.98;    // makes speed go faster every level
+                    VERTICALSPEED *= 0.98;
                 }
                 
 
