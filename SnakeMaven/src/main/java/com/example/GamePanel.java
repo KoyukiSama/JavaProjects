@@ -26,7 +26,7 @@ public class GamePanel {
     }
 
     private void printScore() {
-        terminal.writer().println("SCORE: " /*+ Score.getScore()*/);  // update with score later
+        terminal.writer().println("SCORE: " + score.getStrScore());  // update with score later
     }
 
     private void cleanGrid() {
@@ -67,7 +67,7 @@ public class GamePanel {
             terminal.writer().print(grid[i]);
             if (x == w-1) {
                 if (y == 0) {                           //!!!!!// prints stats
-                    terminal.writer().print("  | Level: " + level.getLevel());
+                    terminal.writer().print("  | Level: " + level.getStrLevel()); // print level
                 }                                          
 
 

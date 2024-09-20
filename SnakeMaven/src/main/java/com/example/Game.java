@@ -12,7 +12,7 @@ public class Game {
     public static void main(String[] args) {
         Snake snake = new Snake(WIDTH, HEIGHT);
         Level level = new Level();
-        Score score = new Score();
+        Score score = new Score(level);
         InputHandler inputHandler = null;
 
         try {
@@ -25,6 +25,7 @@ public class Game {
             while (!isGameOver) {
                 Key currentDirection = inputHandler.getCurrentDirection();
 
+                score.updScore();
                 snake.updSnake(currentDirection);           // moves SNAKE
 
                 if (snake.isCollide()) {                    // checks GAMEOVER
