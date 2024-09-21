@@ -7,7 +7,7 @@ public class Level {
     private int w;
     private int h;
     private Snake snake;
-    private int foodPos;
+    private Food food;
 
     private ArrayList<int[]> enemyXList;
     private ArrayList<int[]> enemyBList;
@@ -19,7 +19,7 @@ public class Level {
         this.h = height;
 
         this.snake = snake;
-        this.foodPos = food.getFood();
+        this.food = food;
         this.enemyXList = new ArrayList<>();
         this.enemyBList = new ArrayList<>();
     }
@@ -42,7 +42,7 @@ public class Level {
                         valid = false;
                     }
                 }
-                if (foodPos == index) {
+                if (food.getFood() == index) {
                     valid = false;
                 }
             }
@@ -64,14 +64,14 @@ public class Level {
                 if (HorY == 0) {                                // horizontal
                     for (int i = 0, nx = x; i < length; i++, nx++) {     // populate array
                         enemyB[i] = Util.XYtoIndex(nx, y, w);
-                        if (enemyB[i] == snakeHead || nx == w-1 || enemyB[i] == foodPos) {
+                        if (enemyB[i] == snakeHead || nx == w-1 || enemyB[i] == food.getFood()) {
                             valid = false;
                         }
                     } 
                 } else if (HorY == 1) {                         // vertical
                     for (int i = 0, ny = y; i < length; i++, ny++) {
                         enemyB[i] = Util.XYtoIndex(x, ny, w);
-                        if (enemyB[i] == snakeHead || ny == h-1 || enemyB[i] == foodPos) {
+                        if (enemyB[i] == snakeHead || ny == h-1 || enemyB[i] == food.getFood()) {
                             valid = false;
                         }
                     }

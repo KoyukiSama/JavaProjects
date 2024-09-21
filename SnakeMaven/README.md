@@ -8,5 +8,4 @@ press wasd to move around
 
 
 Known bugs:
-1. food sometimes doesn't appear on the grid,
-probably because the walls or X's spawn ontop of it or because they don't properly take the food into account.
+none
