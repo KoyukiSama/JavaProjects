@@ -69,10 +69,21 @@ public class GamePanel {
     }
 
     private void enemyXGrid() {
-        ArrayList<Integer> enemyXList = level.getEnemyX();
+        ArrayList<int[]> enemyXList = level.getEnemyX();
         int enemyXListLEN = enemyXList.size();
         for (int i = 0; i < enemyXListLEN; i++) {
-            grid[enemyXList.get(i)] = 'X';
+            int[] enemyX = enemyXList.get(i);
+            grid[enemyX[0]] = 'X';
+        }
+    }
+    private void enemyBGrid() {
+        ArrayList<int[]> enemyBList = level.getEnemyB();
+        int enemyBListLEN = enemyBList.size();
+        for (int i = 0; i < enemyBListLEN; i++) {
+            int[] enemyB = enemyBList.get(i);
+            for (int pos : enemyB) {
+                grid[pos] = 'B';
+            }
         }
     }
 
@@ -109,6 +120,9 @@ public class GamePanel {
         int curLevel = level.getLevel();
         if (curLevel >= 5) {
             enemyXGrid();
+        }
+        if (curLevel >= 10) {
+            enemyBGrid();
         }
         printGrid(); // print whole grid
     }

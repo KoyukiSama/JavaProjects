@@ -101,11 +101,22 @@ public class Snake {
     }
 
     private boolean isEnemyCollide() {
-        ArrayList<Integer> enemyXList = level.getEnemyX();
+        ArrayList<int[]> enemyXList = level.getEnemyX();
+        ArrayList<int[]> enemyBList = level.getEnemyB();
         int enemyXListLEN = enemyXList.size();
+        int enemyBListLEN = enemyBList.size();
+
         for (int i = 0; i < enemyXListLEN; i++) { // go through enemyX
-            if (snake[head] == enemyXList.get(i)) { return true; }
+            int[] enemyX = enemyXList.get(i); 
+            if (snake[head] == enemyX[0]) { return true; }
         }
+        for (int i = 0; i < enemyBListLEN; i++) {
+            int[] enemyB = enemyBList.get(i);
+            for (int Bpos : enemyB) {
+                if (snake[head] == Bpos) { return true; }
+            }
+        }
+
         return false;
     }
 

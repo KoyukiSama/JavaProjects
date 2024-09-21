@@ -30,9 +30,9 @@ public class Game {
 
                 snake.updSnake(currentDirection);           // moves SNAKE
                 if (snake.isEatFood()) {
+                    food.updFood();
                     level.updLevel();
                     score.updScore();
-                    food.updFood();
                     HORIZONTALSPEED *= 0.98;    // makes speed go faster every level
                     VERTICALSPEED *= 0.98;
                 }
